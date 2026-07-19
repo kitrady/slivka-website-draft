@@ -1,29 +1,28 @@
-// TODO make comments less AI-y (for a human to do)
-// wait for the HTML to finish loading so querySelector below can find these elements
+// we need to wait for the HTML to finish loading to ensure elements we are selecting are actually loaded
 document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector(".nav-links");
-    // every top-level nav item that has its own submenu (About, People, etc.)
+    // selecting all the top level nav items that have a dropdown
     const dropdownItems = nav.querySelectorAll(".menu-item.has-dropdown");
-    // real destination links: dropdown-less top items (:not(.has-dropdown) excludes the 5 expandable
-    // sections, leaving just Non-Res Application/Feed) + every submenu link (.nav-sub-link).
-    // clicking one of these should close the whole mobile menu, like navigating away
+    // selecting all the "actual destination" links
+    // meaning all the subsection links + the top level nav items that aren't dropdowns
+    // we do this by selecting all the children of non-dropdown menu items that are header-links or nav-sub-links
     const leafLinks = nav.querySelectorAll(".menu-item:not(.has-dropdown) > .header-links, .nav-sub-link");
 
-    // shows the mobile hamburger menu
+    // this function shows the mobile hamburger menu
     function openMenu() {
         nav.classList.add("show");
         toggle.setAttribute("aria-expanded", "true");
     }
 
-    // hides the mobile hamburger menu, and any dropdown left open inside it
+    // this function hides the mobile hamburger menu, and any dropdown left open inside it
     function closeMenu() {
         nav.classList.remove("show");
         toggle.setAttribute("aria-expanded", "false");
         closeAllDropdowns();
     }
 
-    // closes every open dropdown, except the one passed in (if any).
+    // this function closes every open dropdown, except the one passed in (if any).
     // the "except" parameter is what lets opening one dropdown close the others without closing itself
     function closeAllDropdowns(except) {
         dropdownItems.forEach(function (item) {
@@ -38,9 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // hamburger button: toggle the mobile menu open or closed
+    // adds an event listener that allows the mobile hamburger menu to be toggled open or closed
     toggle.addEventListener("click", function (event) {
-        // stop this click from also triggering the document-level "click outside" listener below
+        // this line stops the click from also triggering the document-level "click outside" listener below
         event.stopPropagation();
 
         const menuIsCurrentlyOpen = nav.classList.contains("show");
@@ -51,19 +50,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // wire up each dropdown item's label text AND chevron to open/close its own submenu
+    // adds a callback function to each dropdown label's text and chevron that opens and closes its own submenu
     dropdownItems.forEach(function (item) {
         const label = item.querySelector(".header-links");
         const chevron = item.querySelector(".dropdown-toggle");
 
+        // this function is defined within this "for-each" section because its only used in this specific "loop"
         function toggleThisDropdown(event) {
-            // stops the placeholder "#" link from jumping the page to the top
+            // this line stops the placeholder "#" link from jumping the page to the top
             event.preventDefault();
-            // stops this click from also triggering the document-level "click outside" listener below
+            // this line stops this click from also triggering the document-level "click outside" listener below
             event.stopPropagation();
 
             const wasOpen = item.classList.contains("open");
-            // close any other open dropdown first, so only one is ever open at a time
+            // calls this function to close any other open dropdown first, so only one is ever open at a time
             closeAllDropdowns(item);
 
             if (wasOpen) {
@@ -75,19 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
+        // using the function we just defined to get the "toggling the dropdown open a closed" behavior we want
         label.addEventListener("click", toggleThisDropdown);
         chevron.addEventListener("click", toggleThisDropdown);
     });
 
-    // clicking a real destination link closes the whole mobile menu, as if navigating away
+    // adding a callback function to each real destination link that closes the whole mobile menu (user navigating away)
     leafLinks.forEach(function (link) {
         link.addEventListener("click", function () {
             closeMenu();
         });
     });
 
-    // clicking anywhere outside the nav: close the mobile menu if it's open,
-    // otherwise (desktop) just close whichever dropdown is currently open
+    // add an event listen that checks if there was a click anywhere outside the nav
+    // if so: on mobile, close the whole nav menu dropdown
+    // on desktop, just close whichever dropdown is currently open
     document.addEventListener("click", function (event) {
         const menuIsOpen = nav.classList.contains("show");
         const clickWasOutsideNav = !nav.contains(event.target) && event.target !== toggle;
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Escape key closes everything, for keyboard users
+    // add an event listen that makes the escape key closes everything (for keyboard users)
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
             closeMenu();
