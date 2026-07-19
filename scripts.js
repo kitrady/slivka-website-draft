@@ -17,8 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(function (headerHtml) {
             // selecting the header placeholder and settings its contents to be the header
             // while replacing the %ROOT% placeholders in the header placeholder with the actual path to the root
-            document.getElementById("header-placeholder").innerHTML = headerHtml.replaceAll("%ROOT%", pathToRoot);
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            headerPlaceholder.innerHTML = headerHtml.replaceAll("%ROOT%", pathToRoot);
+            // sets the header's color theme here instead of in every page's HTML, so it only needs to change in one place
+            headerPlaceholder.classList.add("light");
             setUpHeader();
+        });
+
+    // this fetch uses pathToRoot to find hero.html and replace the marked elements of the page with the hero section
+    fetch(pathToRoot + "hero.html")
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (heroHtml) {
+            // selecting the hero placeholder and settings its contents to be the hero section
+            // while replacing the %ROOT% placeholders in the hero placeholder with the actual path to the root
+            // (there are currently no references to the %ROOT%, but there will be in the future)
+            document.getElementById("hero-placeholder").innerHTML = heroHtml.replaceAll("%ROOT%", pathToRoot);
         });
 });
 
