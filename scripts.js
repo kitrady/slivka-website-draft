@@ -1,5 +1,29 @@
-// we need to wait for the HTML to finish loading to ensure elements we are selecting are actually loaded
+// we need to wait for the HTML of each page to finish loading to ensure elements we are selecting are actually loaded
 document.addEventListener("DOMContentLoaded", function () {
+    // pages on this site are either sitting at the site's root, or one folder inside it,
+    // so each page just says which one it is by setting `pageIsNested` in a <script> tag before this file loads
+    let pathToRoot;
+    if (pageIsNested) {
+        pathToRoot = "../";
+    } else {
+        pathToRoot = "./";
+    }
+
+    // this fetch uses pathToRoot to find header.html and replace the marked elements of the page with the header
+    fetch(pathToRoot + "header.html")
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (headerHtml) {
+            // selecting the header placeholder and settings its contents to be the header
+            // while replacing the %ROOT% placeholders in the header placeholder with the actual path to the root
+            document.getElementById("header-placeholder").innerHTML = headerHtml.replaceAll("%ROOT%", pathToRoot);
+            setUpHeader();
+        });
+});
+
+// this function contains everything that is needed to create the behavior of the header
+function setUpHeader() {
     const toggle = document.querySelector(".menu-toggle");
     const nav = document.querySelector(".nav-links");
     // selecting all the top level nav items that have a dropdown
@@ -107,4 +131,4 @@ document.addEventListener("DOMContentLoaded", function () {
             closeMenu();
         }
     });
-});
+}
