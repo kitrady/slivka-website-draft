@@ -9,6 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
         pathToRoot = "./";
     }
 
+    // this fetch uses pathToRoot to find hero.html and replace the marked elements of the page with the hero section
+    fetch(pathToRoot + "hero.html")
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (heroHtml) {
+            // selecting the hero placeholder and settings its contents to be the hero section
+            // while replacing the %ROOT% placeholders in the hero placeholder with the actual path to the root
+            // (there are currently no references to the %ROOT%, but there will be in the future)
+            document.getElementById("hero-placeholder").innerHTML = heroHtml.replaceAll("%ROOT%", pathToRoot);
+        });
+
     // this fetch uses pathToRoot to find header.html and replace the marked elements of the page with the header
     fetch(pathToRoot + "header.html")
         .then(function (response) {
@@ -24,16 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
             setUpHeader();
         });
 
-    // this fetch uses pathToRoot to find hero.html and replace the marked elements of the page with the hero section
-    fetch(pathToRoot + "hero.html")
+    // this fetch uses pathToRoot to find footer.html and replace the marked elements of the page with the footer
+    fetch(pathToRoot + "footer.html")
         .then(function (response) {
             return response.text();
         })
-        .then(function (heroHtml) {
-            // selecting the hero placeholder and settings its contents to be the hero section
-            // while replacing the %ROOT% placeholders in the hero placeholder with the actual path to the root
+        .then(function (footerHtml) {
+            // selecting the footer placeholder and settings its contents to be the footer section
+            // while replacing the %ROOT% placeholders in the footer placeholder with the actual path to the root
             // (there are currently no references to the %ROOT%, but there will be in the future)
-            document.getElementById("hero-placeholder").innerHTML = heroHtml.replaceAll("%ROOT%", pathToRoot);
+            document.getElementById("footer-placeholder").innerHTML = footerHtml.replaceAll("%ROOT%", pathToRoot);
         });
 });
 
