@@ -18,7 +18,7 @@ While both Mac and Linux operating systems come with standard development tools,
 
 What this means for these instructions is this: Windows users are going to have to first install a little extra software to allow them to do git in a way that follows UNIX conventions. Once they install this software, they can follow the rest of this guide and future guides without any additional steps (aside from a few edge cases).
 
-The secret special software to install is called Git for Windows. Instructions to install are below:
+**The secret special software to install is called Git for Windows. Instructions to install are below:**
 - Go to https://git-scm.com/install/windows and download the most recent version 
 - Run the installer to install Git for Windows, which will install an app called Git Bash
 
@@ -60,7 +60,8 @@ Guess what? Repos are just folders that contain more folders and files and code!
 - `.` – this is not a command, rather more of a keyword. It symbolizes the directory you are currently in. For example, if you typed `cd .` absolutely nothing would happen. This is useful in other instances tho.
 - `..` – again, this is a keyword not a command. It symbolizes the directory that is above the one you are currently in. For example, if you were in a folder named `myThings` and it contained the folders `myStuff1` and `myStuff2` and you did `cd myStuff1`, you could get back into the `myThings` directory by doing `cd ..`. This is really useful, because otherwise you have no way to go back after going into a folder. Given the pattern of `.` and then `..` you might think `...` is two directories above you and so on, but that is not the case (`...` doesn't mean anything).
 - `example/file/path` – you can navigate multiple folders at once, you don't have to work with them one by one. You can do this via file paths, which specify several folders to traverse and are separated with forward slashes. For example, if you were in the `myShit` folder, which contained the `myThings` folder, which contained the `myStuff1` and `myStuff2` folders, you could do `cd myThings/myStuff1` to switch into the `myStuff1` folder. From there, you could do `cd ../myStuff2` to switch into the `myStuff2` folder, because that folder is contained one level up from where you currently are, and `..` means "the folder one level up". You can also specify files with file paths, hence the name. For example, if you were running a command that took a file as an argument instead of a folder, you could give it a straight file name, or you could give it a file path that actually ends with a file (e.g. `command myThing/myStuff1/file1.txt`).
-- `~` and root – the "root" of a file structure just means "the top". For example, if you had a repository called `foo` on your computer, that means there would be a folder named `foo` with all the code inside it, and the root of the repository would be that `foo` folder. Operating systems also have roots, and you can technically navigate to them, but you generally won’t need to for normal development. There can also be multiple users on one machine, and they each get their own home directory where their stuff is stored. Other users generally can’t access the private contents of your home directory. Your own home directory is symbolized by `~`. On Mac, this is the user folder, meaning that on my computer, this repo is stored at `~/Projects/slivka-website-draft` which matches up with the fact that I can open finder (mac version of file explorer) and navigate kitrady -> Projects -> slivka-website-draft.
+- `~` and root – the "root" of a file structure just means "the top". For example, if you had a repository called `foo` on your computer, that means there would be a folder named `foo` with all the code inside it, and the root of the repository would be that `foo` folder. Operating systems also have roots, and you can technically navigate to them, but you generally won’t need to for normal development. There can also be multiple users on one machine, and they each get their own home directory where their stuff is stored. Other users generally can’t access the private contents of your home directory. Your own home directory is symbolized by `~`. On Mac, this is the user folder, meaning that on my computer, this repo is stored at `~/Projects/slivka-website-draft` which matches up with the fact that I can open finder (Mac version of file explorer) and navigate kitrady -> Projects -> slivka-website-draft.
+- autocomplete – this is a feature of most terminals as opposed to a command or keyword. When you are typing a file name, folder name, or file path, your computer can take what you have already typed and compare it to the valid files / folders to either autocomplete what you are typing or list possibilities. Please use this feature all the time, don't waste time typing.
 
 ### Cloning the Repo
 
@@ -71,7 +72,7 @@ Now that you have access, you need to get the code onto your machine so you can 
 3. Type `git clone ` and then paste the text you copied and hit enter.
 4. Run `ls` to see the directory contents and proof to yourself that you did in fact clone the repo. Then run `cd slivka-website-draft` to switch into the repo so you can begin doing git stuff!
 
-Congratulations! You now have a local copy of a GitHub repo on your computer and can now actually make edits!
+Congratulations! You now have a local copy of a GitHub repo on your computer and can now actually make edits! You may now move onto the practice excersises described below.
 
 ## Git and GitHub Practice Excersises
 
