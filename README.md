@@ -22,7 +22,9 @@ The secret special software to install is called Git for Windows. Instructions t
 - Go to https://git-scm.com/install/windows and download the most recent version 
 - Run the installer to install Git for Windows, which will install an app called Git Bash
 
-Once that is done, you are basically done with Windows specific steps. The only special step you need to remember is that **when the instructions say to run a command in the terminal, you need to run that command in the Git Bash app.**
+Once that is done, you are basically done with Windows specific steps. The only special step you need to remember is that **when the instructions say to run a command in the terminal, you need to run that command in the Git Bash app.** However, there are some quirks that are unique to the terminal the Git Bash app provides:
+- The copy and paste shortcuts don't work, so you will have to right-click and select copy / paste. If you do try the copy and paste shortcuts, the terminal will type weird gibberish in the text input field (this is expected behavior given how Git Bash works).
+- The terminal violently flash when you enter "incorrect" inputs (e.g. hitting the left arrow key when you are already on the furthest left side of the text input field). This is also expected behavior given the style of terminal Git Bash is.
 
 ## Setup Instructions
 
