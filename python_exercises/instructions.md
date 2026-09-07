@@ -80,6 +80,31 @@ The command here to use is `git pull`. The one big caveat is that, before doing 
 
 I will cover what to do in this situation later, but for now, to be safe, please just undo any changes locally before pulling if there are changes present. There is a handy little git command to undo any changes you made, meaning you don't have to do it manually. The command in question is `git restore <file-path>`. This is identical in form to git add, with the difference in behavior being that git restore undoes changes instead of staging them like git add does. Additionally, if you stage changes but later decide you don't want to include them in this commit, but still want to keep the changes locally (e.g. you started making changes unrelated to the goal of the commit, but forgot and commited those changes anyway), you can unstage them with git restore. Just do `git restore --staged <file-path>`. Make sure you include the `--staged` otherwise it will undo your change completely, and you won't be able to get it back.
 
+## Python Exercise Three
+
+By now, you should know the basics of how to use git. This is already a few commands more than you would learn in CS 211 iirc. But, because we are specifically going to be doing a lot of editing and drafting work in this repo, there is one more feature that I think we should make use of: branches and pull requests. These features will allow us to further separate the canonical version of the code and personal versions of the code, as well as allow us to give feedback and propose changes before we add changes to the remote repo.
+
+The first step is to read the section below to understand what branches and pull requests are. Once you have done that, create a new branch and start making your changes for exercise three. The goal of exercise three is very simple: make me a silly little program that does something silly and pointless. Once you have done that, stage, commit, and push your changes, but this time on your branch instead of the main branch. Then go to the repo webpage, create a pull request, ping me on the discord, and wait for me to review your PR. I will then do a formal PR review, make some comments to request changes to make your silly little program even sillier, and you should make changes to incorporate that feedback. After that, I will approve your PR, you can merge it into the main branch, and you can switch back to the main branch and pull down your own changes.
+
+## Using Branches and Pull Requests
+
+These two features of git allow devs to temporarily make alternate but parallel versions of the repo so that bigger changes can more easily be made over time and reviewed by others. Branches are the feature that allows the different versions of the repo to exist; pull requests are the feature that allow others to review the changes and for the alternate version of the repo to be merged back into the main version.
+
+## Branches
+
+Different branches in a repo are different (but parallel, if you like thinking in flow charts) versions of the code. The default branch that already exists in every repo is the main branch. A branch starts by branching off from the main branch (aka a branch starts with an identical copy of the code in the main branch). Then, changes are added to the branch, before eventually the branch is merged back into the main branch, therefore making the changes contained inside the branch part of the main canonical version of the repo.
+
+To create a branch, run `git checkout -b branch-name`. Branch names can be one word, but should really be no longer than three (not because it will break anything, but just because its convention). The words should be separated by dashes and the name should contain no other special characters. The branch name should somewhat describe what your goal for this set of changes is.
+
+To check what branches exist on your local machine and to see which branch you are currently on, run `git branch`. To switch between branches, run `git checkout branch-name`. Be careful to be intentional about when you switch branches – branches truly are parallel but separate versions of the code, so changes you make in one branch won't show up in the other. If you are not careful you could make some mistakes (e.g. accidentally split up a set of changes between two branches).
+
+One important detail is that both your local and the remote repo are fully functioning repos on their own, meaning they can each have their own separate sets of branches. What this means for us is that creating a branch locally does not automatically create a branch in the remote. Because of this, when you push a commit for the very first time, the push will fail with the message "the current branch has no upstream branch". It will then say "to push the current branch and set the remote as upstream, use `git push --set-upstream origin test`" which will do as promised and allow you to push the branch. You can just run `git push` as normal, get this error, and copy-paste the command it gives you to fix it (there is no need to memorize the command, everyone just copy-pastes it). After the initial push, the rest of your pushes will work as normal.
+
+## Pull Requests
+
+Pull requests are a GitHub specific feature used to bundle up a set of related changes, give feedback on those changes, and merge those changes into the main branch easily. Because they are GitHub specific, we will be doing them through the GitHub repo webpage, not the terminal.
+
+
 
 Kit's notes on what the instructions need to cover next (please ignore)
 
