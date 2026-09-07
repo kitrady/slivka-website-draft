@@ -76,7 +76,7 @@ Congratulations! You now have a local copy of a GitHub repo on your computer and
 
 ## Git and GitHub Practice Excersises
 
-Please reference to `python_excercises/instructions.md` for the next steps in becoming familiar with git and GitHub (but don't actually do that because it's not finished yet).
+Please reference to `python_excercises/instructions.md` for the next steps in becoming familiar with git and GitHub. You can view the instructions either via the repo's webpage by using the file structure UI, or by opening up your clone of the repo in a code editor. I would strongly reccomend you use the PyCharm editor (I discuss my reasons why in the instructions), but you can techincally use any editor you want.
 
 ## Advanced CSS Concepts Used in this Repo
 
