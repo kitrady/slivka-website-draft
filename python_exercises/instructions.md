@@ -90,7 +90,7 @@ The first step is to read the section below to understand what branches and pull
 
 These two features of git allow devs to temporarily make alternate but parallel versions of the repo so that bigger changes can more easily be made over time and reviewed by others. Branches are the feature that allows the different versions of the repo to exist; pull requests are the feature that allow others to review the changes and for the alternate version of the repo to be merged back into the main version.
 
-## Branches
+### Branches
 
 Different branches in a repo are different (but parallel, if you like thinking in flow charts) versions of the code. The default branch that already exists in every repo is the main branch. A branch starts by branching off from the main branch (aka a branch starts with an identical copy of the code in the main branch). Then, changes are added to the branch, before eventually the branch is merged back into the main branch, therefore making the changes contained inside the branch part of the main canonical version of the repo.
 
@@ -100,7 +100,7 @@ To check what branches exist on your local machine and to see which branch you a
 
 One important detail is that both your local and the remote repo are fully functioning repos on their own, meaning they can each have their own separate sets of branches. What this means for us is that creating a branch locally does not automatically create a branch in the remote. Because of this, when you push a commit for the very first time, the push will fail with the message "the current branch has no upstream branch". It will then say "to push the current branch and set the remote as upstream, use `git push --set-upstream origin branch-name`" which will do as promised and allow you to push the branch. You can just run `git push` as normal, get this error, and copy-paste the command it gives you to fix it (there is no need to memorize the command, everyone just copy-pastes it). After the initial push, the rest of your pushes will work as normal.
 
-## Pull Requests
+### Pull Requests
 
 Pull requests are a GitHub specific feature used to bundle up a set of related changes, give feedback on those changes, and merge those changes into the main branch easily. The reason they are called pull requests is that you are requesting that the main branch pull in your code and changes. Because they are GitHub specific, we will be doing them through the GitHub repo webpage, not the terminal.
 
@@ -110,18 +110,28 @@ After that, you should be taken to a new screen where you can add a title and de
 
 Then, you can hit the green button to create your pull request. After that, you will see that you need at least one approving review before you can merge your pull requests. At this point, you should ping me on the discord so that I can review your PR. I won't approve it, because I will be requesting changes instead, and so you still won't be allowed to merge. After I submit my review, you should see my comments/requests, and you should go back to your editor to act on them. Once you have made the requested changes, you can commit and push them, and then mark my comments as resolved. Then you should ping me again, so I can give an approving review.
 
-After all of that, you should click the green button to merge your pull request. Once the pull request has been successfully merged, you should go to your terminal and switch back to the main branch (via `git checkout main`). Then you should run `git pull` to pull your own changes down to your local main branch. If this is confusing to you, remember that branches are completely separate versions of the code: just because one of your local branches contained the changes doesn't mean the other branches do. By merging your pull request, you added the changes from your branch into the main branch in the repo remote. Now, you need to pull the changes that are now in the remote repo's main branch to your local main branch, just like you would pull any other changes.
+After all of that, you should click the green button to merge your pull request. You will then see a pop-up with a purple icon saying that your pull request has been successfully merged and saying you can safely delete the branch. Click the button to delete the branch; if you don't, we will have a bunch of extra branches lying around. While this isn't inherently problematic, it can cause issues for GitHub repos with more bells and whistles attached, and so its good practice to delete the branches.
+
+Once all that is done, you should go to your terminal and switch back to the main branch (via `git checkout main`). Then you should run `git pull` to pull your own changes down to your local main branch. If this is confusing to you, remember that branches are completely separate versions of the code: just because one of your local branches contained the changes doesn't mean the other branches do. By merging your pull request, you added the changes from your branch into the main branch in the repo remote. Now, you need to pull the changes that are now in the remote repo's main branch to your local main branch, just like you would pull any other changes.
 
 You have now successfully merged a PR! You can now go on creating more PRs with more edits just like professional software devs do. Side note: when you create new branches, make sure to create them while on the main branch. If you create them from another branch, they will start with code identical to that other branch, not the main branch, and things will get a little confusing.
 
 After this, there is only one more thing we need to learn: how to deal with merge conflicts. However, merge conflicts result from multiple people making conflicting edits. Thus, to create a situation where there will be a merge conflict for learning purposes, we will need multiple people acting in coordination. This step will be saved for some other time when we can all get together and do this non-async (or at least once everyone is caught up to this step).
 
-Kit's notes on what the instructions need to cover next (please ignore)
+# Other Useful Things to Know
 
-- do whole branch thing again but get merge conflicts
+I am going to write these sections in the future.
 
-- stashing changes?
-- git restore in its own section?
-- The structure of terminal commands?
-- Need to write Vim section
-- deleting branches?
+## More Terminal Tricks
+
+### Using and Escaping Vim
+
+### The Structure of Terminal Commands
+
+## More Git Tricks
+
+### The Diff View
+
+### Stashing Changes
+
+### Deleting Branches Locally
