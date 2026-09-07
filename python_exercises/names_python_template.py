@@ -14,6 +14,20 @@ def kits_broken_function():
 
     print("That's all the programming languages in our list!")
 
+##
+## EXERCISE 2 - fill in the variables
+##
+def introduce_yourself():
+    """
+    Prints and introduction to the person who wrote this function.
+    """
+
+    # TODO: fill the the following variables with values that make the print statement true about yourself
+    name = ""
+    major= ""
+
+    print("My name is", name, "and I am majoring in", major)
+
 
 if __name__ == "__main__":
     kits_broken_function()

@@ -61,7 +61,7 @@ We have covered how to incorporate your changes into the remote repo, so now we 
 
 The first step here is letting me know you are onto the second exercise, so I know I need to make the change to your personal Python exercise file. Then, once I have confirmed everything is set up, read the next section for how to get the changes onto your local machine. 
 
-Once you have done that, you can complete the exercise as you normally would. The goal of the exercise is something (I haven't written it yet). Once you have finished the exercise, please check your edits with `git status`, add your changes with `git add <file-path>`, commit your changes with `git commit -m "YOUR COMMIT MESSAGE (REQUIRED)"`, and push the changes with `git push`.
+Once you have done that, you can complete the exercise as you normally would. The goal of the exercise is to fill in the variables with the correct values. Once you have finished the exercise, please check your edits with `git status`, add your changes with `git add <file-path>`, commit your changes with `git commit -m "YOUR COMMIT MESSAGE (REQUIRED)"`, and push the changes with `git push`.
 
 A couple notes on this "status, add, commit, push" process that make it simpler
 - Git add takes any valid file path as an argument. Technically, a single file *or a single folder* is the trivial case of a file path. This means we can add whole folders of changes at once, instead of just single files at once. If you remember, we discussed how `.` is a keyword meaning the current folder. At the time we introduced it, `.` was rather useless, but now we have a use for it. If we want to add all the changes in the folder we are currently in, we can do `git add .` and since we are in the repo root, `git add .` will add all the changes we have made in our local repo. So if you are going to include all the changes you made in this commit, you should just run `git add .`.
@@ -100,3 +100,4 @@ Kit's notes on what the instructions need to cover next (please ignore)
 - stashing changes?
 - git restore in its own section?
 - The structure of terminal commands?
+- Need to write Vim section
