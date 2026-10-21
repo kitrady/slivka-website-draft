@@ -4,8 +4,18 @@
 print("Exercise 1 is in your individually named file.")
 print("---")
 
+# EXERCISE 2 - pulling changes
 
-# EXERCISE 2 - merge conflicts
+fav_animals = []
+
+for i, j in enumerate(fav_animals):
+    print("The", j, "is my top", i+1, "favorite animal.")
+
+print("That's all my favorite animals that I listed!")
+
+print("---")
+
+# EXERCISE 3 - merge conflicts
 # Add you name to the list so it can be printed
 
 print("The names of our committee members are as follows:")
