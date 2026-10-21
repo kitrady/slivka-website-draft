@@ -31,7 +31,7 @@ def list_fav_animals():
 
 def cats_silly_thing():
     num1 = int(input("enter a number: "))
-    num2 = int(input("enter another number: ")) #if you input a letter ripg
+    num2 = int(input("enter another number: ")) #if you input a letter rip ig
 
     def payment_wall(): #yes its a function inside a function 
         payment_bool = input("are you willing to pay? y/n ")
