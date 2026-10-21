@@ -14,6 +14,18 @@ def kits_broken_function():
 
     print("That's all the programming languages in our list!")
 
+##
+## EXERCISE 2 - fix the other broken function
+##
+def list_fav_animals():
+    fav_animals = ['dogs', 'cats', 'crows', 'otters']
+
+    for i, j in enumerate(fav_animals):
+        print("The", j, "are my top", i + 1, "favorite animal.")
+
+    print("That's all my favorite animals that I listed!")
+
 
 if __name__ == "__main__":
-    kits_broken_function()
+    #kits_broken_function()
+    list_fav_animals()
