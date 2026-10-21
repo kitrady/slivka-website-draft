@@ -10,7 +10,7 @@ def kits_broken_function():
     languages = ["Python", "Java", "C++"]
 
     for i, j in enumerate(languages):
-        print("Programming language", i, "is item number", j, "in the list of languages")
+        print("Programming language", j, "is item number", i+1, "in the list of languages")
 
     print("That's all the programming languages in our list!")
 
