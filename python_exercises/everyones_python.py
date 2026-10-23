@@ -21,7 +21,7 @@ print("---")
 
 print("The names of our committee members are as follows:")
 
-committee_member_names = []
+committee_member_names = ["Pedro"]
 
 for name in committee_member_names:
     print(name)
