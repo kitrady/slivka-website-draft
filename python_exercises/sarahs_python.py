@@ -1,18 +1,19 @@
-# EXERCISE 1 - using GitHub on your own
-# Look in your individual files
+##
+## EXERCISE 1 - fix the broken function
+##
+def kits_broken_function():
+    """
+    Creates a list of programming languages and prints them to the console in order.
+    """
 
-print("Exercise 1 is in your individually named file.")
-print("---")
+    # TODO: this function is broken – run this file to see what is wrong. Your task is to fix it.
+    languages = ["Python", "Java", "C++"]
+
+    for i, j in enumerate(languages):
+        print("Programming language", j, "is item number", i, "in the list of languages")
+
+    print("That's all the programming languages in our list!")
 
 
-# EXERCISE 2 - merge conflicts
-# Add you name to the list so it can be printed
-
-print("The names of our committee members are as follows:")
-
-committee_member_names = []
-
-for name in committee_member_names:
-    print(name)
-
-print("They are led by the committee chair, Kit Rady.")
+if __name__ == "__main__":
+    kits_broken_function()

@@ -10,10 +10,17 @@ def kits_broken_function():
     languages = ["Python", "Java", "C++"]
 
     for i, j in enumerate(languages):
-        print("Programming language", i, "is item number", j, "in the list of languages")
+        print("Programming language", j, "is item number", i+1, "in the list of languages")
 
     print("That's all the programming languages in our list!")
 
+def list_fav_animals():
+    fav_animals = ['dogs', 'cats', 'crows', 'otters']
+
+    for i, j in enumerate(fav_animals):
+        print("The", j, "are my top", i + 1, "favorite animal.")
+
+    print("That's all my favorite animals that I listed!")
 
 if __name__ == "__main__":
     kits_broken_function()
