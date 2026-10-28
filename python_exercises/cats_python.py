@@ -30,21 +30,38 @@ def list_fav_animals():
 ##
 
 def cats_silly_thing():
-    num1 = int(input("enter a number: "))
-    num2 = int(input("enter another number: ")) #if you input a letter rip ig
+    in1 = (input("enter a number or a letter: ")) #we support letters now
+    num2 = int(input("enter a number: ")) 
 
-    def payment_wall(): #yes its a function inside a function 
+
+    def payment_wall_num(): #yes its a function inside a function 
         payment_bool = input("are you willing to pay? y/n ")
 
         if (payment_bool == "y"):
-            print("Congrats, you found out that", num1 , "+", num2, "is equal to", num1 + num2)
+            print("Congrats, you found out that", in1 , "+", num2, "is equal to", in1 + num2)
         elif (payment_bool == "n"):
-            print("rip you will never know what", num1, "+", num2, "is")
+            print("rip you will never know what", in1, "+", num2, "is")
         else:
             print("ERROR: please input either y or n.")
-            payment_wall()
+            payment_wall_num()
+
+
+    def payment_wall_letter(): #woah double functions
+            payment_bool = input("are you willing to pay? y/n ")
     
-    payment_wall()
+            if (payment_bool == "y"):
+                print("Congrats, you found out that", in1 , "*", num2, "is equal to", in1 * num2)
+            elif (payment_bool == "n"):
+                print("rip you will never know what", in1, "*", num2, "is")
+            else:
+                print("ERROR: please input either y or n.")
+                payment_wall_letter()
+
+    
+    if (isinstance(in1, int)):
+        payment_wall_num()
+    else:
+        payment_wall_letter()
 
 
 
