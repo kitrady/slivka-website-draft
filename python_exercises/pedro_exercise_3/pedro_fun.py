@@ -17,17 +17,16 @@ Every question will be used, and answers will be appended to a scoring list, whe
 the most common value will be determined to print something out to the user (something silly).
 """
 
-def ask_question(entry, question_count):
+def ask_question(question_data, question_number):
     #1. Select a question from the json (done in the game loop)
     #2. Shuffle the answers around for a unique playing experience
-    answer_list = [entry[1],entry[2],entry[3],entry[4]]
+    answer_list = [question_data[1],question_data[2],question_data[3],question_data[4]]
     random.shuffle(answer_list)
 
     #3. Ask the question and print a list of the answers for the user to choose from.
-    print(f"Q{question_count}: {entry[0]}")
-    answer_number = 0
-    for answer_pair in answer_list:
-        answer_number += 1
+    print(f"Q{question_number}: {question_data[0]}")
+
+    for answer_number, answer_pair in enumerate(answer_list, start=1):
         print(f"{answer_number}: {answer_pair[0]}")
 
     #4. Proceed only if the user input is a number 1 through 4.
@@ -36,13 +35,10 @@ def ask_question(entry, question_count):
         print("Invalid answer")
         selection = input()
 
-    # print(f"selection is: {int(selection)}")
-    answer_values = answer_list[int(selection)-1][1]
-    # I have an entry, aka a list with 5 items.
-    # Pick from items 1 through 5 (1,2,3,4)
-    # Then, pick the second part of that, [1].
-
-    return answer_values
+    selected_answer = answer_list[int(selection)-1]
+    selected_answer_values = selected_answer[1]
+    #Return the values associated with the chosen answer, which will be appended to the running list of values.
+    return selected_answer_values
 
 def positive_message():
     message_list = [
@@ -89,12 +85,12 @@ def find_outcome(answer_list):
     common_outcomes = [countable_list.most_common(1)[0][0],
                        countable_list.most_common(2)[0][0],
                        countable_list.most_common(3)[0][0]]
-    answer_list = [x for x in answer_list if x != common_outcomes]
+    common_outcomes_set = set(common_outcomes)
+    remaining_outcomes = [x for x in answer_list if x not in common_outcomes_set]
     random_choices = []
     for i in range(5):
-        random_choices.append(random.choice(answer_list))
-        answer_list = [x for x in answer_list if x != random_choices]
-
+        random_choices.append(random.choice(remaining_outcomes))
+        remaining_outcomes = [x for x in remaining_outcomes if x not in random_choices]
 
     # Then from a few preset choices, spit out a fun message.
     
@@ -131,7 +127,7 @@ def play_quiz():
     try:
         with open('questions.json', 'r', encoding='utf-8') as file:
             question_list = json.load(file) 
-            # print("works") # Troublshooting lines.
+            # print("works") # Troubleshooting lines.
         #question_list = json.load(open("questions.json", "r"))
     except FileNotFoundError:
         print("Error: The file path could not be determined")
@@ -140,10 +136,9 @@ def play_quiz():
 
 
     answer_list = []
-    question_count = 0
-    for question in question_list:
-        question_count += 1
-        answer_list.extend(ask_question(question, question_count))
+    # question_count = 0
+    for question_count, question_entry in enumerate(question_list, start=1):
+        answer_list.extend(ask_question(question_entry, question_count))
         time.sleep(0.5)
         positive_message()
         time.sleep(1)
