@@ -220,6 +220,15 @@ h3 + h4 {
     margin: 0 0 0.6em;
 }
 
+.splashtitle {
+    text-decoration: none;
+}
+
+.splashtitle:hover {
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.85);
+    color: color-mix(in srgb, var(--main-light) 90%, black)
+}
+
 .accent > .title {
     border-bottom: 0.2em solid var(--main-dark);
 }
