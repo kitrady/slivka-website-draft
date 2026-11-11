@@ -28,7 +28,17 @@ def introduce_yourself():
 
     print("My name is", name, "and I am majoring in", major)
 
+#exercise 3
+
+def colors(color):
+    newColor = color.lower()
+    if newColor == "red":
+        print("Your favorite color is red, like blood?")
+    else:
+        print(f"{newColor.title()} is a nice color!")
+
 
 if __name__ == "__main__":
     kits_broken_function()
     introduce_yourself()
+    colors("blue")
