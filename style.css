@@ -220,6 +220,142 @@ h3 + h4 {
     margin: 0 0 0.6em;
 }
 
+/* ==========================================================
+   STEP 1: add this near the top of your stylesheet, next to your
+   existing :root block (two :root blocks merge fine, or paste
+   these four variables into the one you already have).
+   ========================================================== */
+:root {
+    --nav-h: 4.4rem;                              /* height of your sticky nav, including its blue border */
+    --hero-home: calc(100vh - var(--nav-h));      /* home page: banner fills the screen above the nav */
+    --hero-inner: 240px;                          /* every other page: short strip */
+    --col: 800px;                                 /* same as your .container, so the title lines up with page content */
+}
+
+@supports (height: 100dvh) {
+    /* on phones, 100dvh accounts for the browser's collapsing address bar */
+    :root {
+        --hero-home: calc(100dvh - var(--nav-h));
+    }
+}
+
+/* ==========================================================
+   STEP 2: delete everything from `.site-hero {` down through
+   `.splashtitle:hover {...}` in your stylesheet (that includes the
+   two separate .splashtitle blocks) and paste this in its place.
+   ========================================================== */
+.site-hero {
+    position: relative;
+    width: 100%;
+    height: var(--hero-home);
+    min-height: 320px;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+}
+
+.site-hero.compact {
+    height: var(--hero-inner);
+    min-height: 0;
+}
+
+#header_image,
+#header_image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#header_image img {
+    object-fit: cover;
+    object-position: center 60%;   /* lower = more of the top shows, higher = more of the bottom */
+    display: block;
+}
+
+/* dark fade at the bottom so the title stays readable */
+#header_image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
+}
+
+/* ---------- Title text ---------- */
+/* Selectors here start with .hero-text so they beat your site-wide h1, h2,
+   .subtitle and a:link rules, which would otherwise center the text,
+   add side margins and force bold. */
+.hero-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2rem;
+    z-index: 1;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--col);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: left;              /* delete this and the two text-align lines below to keep it centered */
+    font-family: "Libre Franklin", Helvetica, Arial, sans-serif;
+}
+
+.hero-text h1 {
+    margin: 0;
+    text-align: left;
+    font-family: inherit;          /* beats your global h1 Trebuchet rule */
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero-text .subtitle {
+    margin: 0.15rem 0 0;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.hero-text .splashtitle {
+    font-weight: inherit;          /* a:link forces bold, which beats the h1's weight otherwise */
+    text-decoration: none;
+}
+
+@media (max-width: 550px) {
+    .hero-text {
+        bottom: 1.5rem;
+        padding: 0 1.5rem;
+    }
+ 
+    .hero-text h1 {
+        font-size: 1.5rem;
+    }
+}
+
+#header_image img {
+    object-position: center 15%;   /* try 0% to 30%: lower number = image shifts down, showing more of its top */
+}
+
+.hero-text .splashtitle:hover {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.85);
+    color: color-mix(in srgb, var(--main-light) 90%, black);
+}
+
+.hero-text .splashtitle:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
+}
+
+@media (max-width: 550px) {
+    .hero-text {
+        bottom: 1.25rem;
+    }
+}
+
 .splashtitle {
     text-decoration: none;
 }
