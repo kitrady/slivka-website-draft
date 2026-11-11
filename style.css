@@ -220,11 +220,6 @@ h3 + h4 {
     margin: 0 0 0.6em;
 }
 
-/* ==========================================================
-   STEP 1: add this near the top of your stylesheet, next to your
-   existing :root block (two :root blocks merge fine, or paste
-   these four variables into the one you already have).
-   ========================================================== */
 :root {
     --nav-h: 4.4rem;                              /* height of your sticky nav, including its blue border */
     --hero-home: calc(100vh - var(--nav-h));      /* home page: banner fills the screen above the nav */
@@ -239,11 +234,6 @@ h3 + h4 {
     }
 }
 
-/* ==========================================================
-   STEP 2: delete everything from `.site-hero {` down through
-   `.splashtitle:hover {...}` in your stylesheet (that includes the
-   two separate .splashtitle blocks) and paste this in its place.
-   ========================================================== */
 .site-hero {
     position: relative;
     width: 100%;
@@ -269,7 +259,7 @@ h3 + h4 {
 
 #header_image img {
     object-fit: cover;
-    object-position: center 60%;   /* lower = more of the top shows, higher = more of the bottom */
+    object-position: center 10%;   /* lower = more of the top shows, higher = more of the bottom */
     display: block;
 }
 
@@ -282,7 +272,7 @@ h3 + h4 {
 }
 
 /* ---------- Title text ---------- */
-/* Selectors here start with .hero-text so they beat your site-wide h1, h2,
+/* Selectors here start with .hero-text so they beat site-wide h1, h2,
    .subtitle and a:link rules, which would otherwise center the text,
    add side margins and force bold. */
 .hero-text {
@@ -318,6 +308,7 @@ h3 + h4 {
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.5;
+    padding-bottom: 1vw;
 }
 
 .hero-text .splashtitle {
@@ -337,7 +328,7 @@ h3 + h4 {
 }
 
 #header_image img {
-    object-position: center 15%;   /* try 0% to 30%: lower number = image shifts down, showing more of its top */
+    object-position: center 25%;   /* try 0% to 30%: lower number = image shifts down, showing more of its top */
 }
 
 .hero-text .splashtitle:hover {
@@ -350,12 +341,6 @@ h3 + h4 {
     outline-offset: 4px;
 }
 
-@media (max-width: 550px) {
-    .hero-text {
-        bottom: 1.25rem;
-    }
-}
-
 .splashtitle {
     text-decoration: none;
 }
@@ -363,6 +348,52 @@ h3 + h4 {
 .splashtitle:hover {
     text-shadow: 4px 4px 8px rgba(0,0,0,0.85);
     color: color-mix(in srgb, var(--main-light) 90%, black)
+}
+
+
+/* Compact banner for every page except the home page. */
+
+:root {
+    --hero-inner: 160px;           /* strip height on inner pages; try 200px to 260px */
+}
+
+body:not(.home) .site-hero,
+.site-hero.compact {
+    height: var(--hero-inner);
+    min-height: 0;
+}
+
+/* which slice of the artwork shows in the short strip (higher % = lower part of the image) */
+body:not(.home) #header_image img,
+.site-hero.compact #header_image img {
+    object-position: center 50%;
+}
+
+body:not(.home) .hero-text h2,
+.site-hero.compact .hero-text h2 {
+    padding-bottom: 1vw;
+}
+
+
+/* same layout, scaled down: same left edge, same stacking, tighter to the bottom */
+body:not(.home) .hero-text,
+.site-hero.compact .hero-text {
+    bottom: 1.5rem;
+}
+
+body:not(.home) #header_image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 10%, rgba(0, 0, 0, 0.8));
+}
+
+
+@media (max-width: 550px) {
+    body:not(.home) .hero-text h1,
+    .site-hero.compact .hero-text h1 {
+        font-size: 1.25rem;
+    }
 }
 
 .accent > .title {
