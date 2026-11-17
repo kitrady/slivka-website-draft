@@ -347,6 +347,19 @@ nav {
     transform: rotate(180deg);
 }
 
+@media (hover: hover) and (min-width: 1191px) {
+    .menu-item:hover > .dropdown,
+    .menu-item:focus-within > .dropdown {
+        display: block;
+    }
+
+    .menu-item:hover > .dropdown-toggle,
+    .menu-item:focus-within > .dropdown-toggle {
+        /* keeps the chevron in sync with the open dropdown */
+        transform: rotate(180deg);
+    }
+}
+
 .dropdown {
     /* removes default ul bullets, spacing, and indent */
     list-style: none;
@@ -374,7 +387,7 @@ nav {
     display: block;
 }
 
-.dropdown a {
+.dropdown {
     /* forces link to take up the whole row so that whole row is clickable, not just the text */
     display: block;
     padding: 0.6em 0.9em;
