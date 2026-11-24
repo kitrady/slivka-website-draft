@@ -10,17 +10,35 @@
 </head>
 <body>
 <div id="hero-placeholder"></div>
-<header id="header-placeholder"></header>
+<header id="header-placeholder"> </header>
+
+<!-- TODO: make this a thing on other tall pages where it could be hard to jump to other parts of the page
+        ^ Do this with CSS styling
+
+TODO: reformat this so there isn't a giant chunk of empty space -->
+<div class="light-alt-1">
+    <div class="container">
+        <section class="compact">
+            <h3> Jump to: </h3>
+            <ul>
+                <li> <a href="#calendar"> Our Calendar </a> </li>
+                <li><a href="#toilet-paper"> Latest TP + Blind vices </a></li>
+                <li><a href="#welcome-letter"> Welcome Letter </a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+
 <div class="light">
     <div class="container">
         <section class="block">
-            <h2>Calendar</h2>
+            <h2 id="calendar">Calendar</h2>
             <p class="text">We have a calendar</p>
             <p class="text">TODO: write this</p>
             <iframe loading="lazy" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23b28f70&amp;ctz=America%2FChicago&amp;src=c2xpdmthaXRAZ21haWwuY29t&amp;color=%23F6BF26&amp;mode=WEEK&amp;showTabs=0&amp;showCalendars=0&amp;showPrint=0&amp;showNav=1&amp;showTitle=0&amp;showDate=1" style="height: 600px"></iframe>
         </section>
         <section class="block">
-            <h2>The Toilet Paper and Blind Vices</h2>
+            <h2 id="toilet-paper">The Toilet Paper and Blind Vices</h2>
             <p class="text">We have a newspaper called the toilet paper</p>
             <p class="text">Here is a link to the toilet paper (maybe)</p>
             <p class="text">Here is the blind vices submission form</p>
@@ -30,7 +48,7 @@
             </div>
         </section>
         <section class="block">
-            <h2>The Welcome Letter</h2>
+            <h2 id="welcome-letter">The Welcome Letter</h2>
             <p class="text">We have a welcome letter</p>
             <p class="text">TODO: write this</p>
             <div class="flex-center">
