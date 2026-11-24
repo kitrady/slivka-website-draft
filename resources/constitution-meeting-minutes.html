@@ -25,8 +25,41 @@
         <section class="block">
             <h2>Meeting Minutes</h2>
             <p class="text">This is where the meeting minutes go</p>
-            <p class="text">TODO: write this</p>
-            <iframe src="https://script.google.com/macros/s/AKfycbzdAIal0ePVgKk79217IBs8glOSqStsVUE5GgyJroPH5cSjvKIehj5qkZJF9uftsc5Yng/exec" class="large-iframe"></iframe>
+            <p class="text">TODO: write this, but there should be two links below this </p>
+
+            <!--<iframe
+              src="https://script.google.com/macros/s/AKfycbyvwccNnZ9ayCk9dwYalS96FrVrJOyJljyncxK0mxsudex5UJGPHjEPwj-M8tn_SI23KQ/exec"
+              style="width:100%; height:900px; border:0;"
+              title="Latest Minutes">
+            </iframe> -->
+
+
+            <!-- The loading is there bc if I just try to pull the urls then the website loads faster than the script,
+            which wouldn't load anything -->
+            <div id="buttons">Loading…</div>
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const box = document.getElementById("buttons");
+
+                    fetch("https://script.google.com/macros/s/AKfycbyvwccNnZ9ayCk9dwYalS96FrVrJOyJljyncxK0mxsudex5UJGPHjEPwj-M8tn_SI23KQ/exec")
+                      .then(r => {
+                        if (!r.ok) throw new Error("HTTP " + r.status);
+                        return r.json();
+                      })
+                      .then(data => {
+                        box.innerHTML = `
+                          <a href="${data.exec}" target="_blank" rel="noopener">Latest Exec Minutes</a>
+                          <a href="${data.house}" target="_blank" rel="noopener">Latest House Minutes</a>
+                        `;
+                      })
+                      .catch(err => {
+                        box.textContent = "Could not load minutes: " + err.message;
+                        console.error(err);
+                      });
+                  });
+                </script>
+            <!-- <iframe src="https://script.google.com/macros/s/AKfycbzdAIal0ePVgKk79217IBs8glOSqStsVUE5GgyJroPH5cSjvKIehj5qkZJF9uftsc5Yng/exec" class="large-iframe"></iframe>
+            I don't know what this is above, it's just a solidworks introduction document which I'm guessing is a placeholder? -->
         </section>
     </div>
 </div>
